@@ -1,0 +1,40 @@
+#ifndef _COMMON_H
+#define _COMMON_H
+
+#define PROG_NAME "nexporter"
+
+#ifdef ANSI_TERM_COLOR
+	#define MESG_FAIL "[ \e[1;31mFAIL\e[0m ] "
+	#define MESG_DONE "[ \e[1;32mDONE\e[0m ] "
+	#define MESG_WARN "[ \e[1;33mWARN\e[0m ] "
+	#define MESG_INFO "[ \e[1;34mINFO\e[0m ] "
+#else
+	#define MESG_FAIL "[ FAIL ] "
+	#define MESG_DONE "[ DONE ] "
+	#define MESG_WARN "[ WARN ] "
+	#define MESG_INFO "[ INFO ] "
+#endif
+
+#define MESG_INDENT "         "
+
+#define GPBUFSIZE 1024
+
+enum {
+	SUCCESS = 0,
+	ERROR_BUFFER_OVERFLOW = 5,
+	ERROR_CONFIG_OPEN = 10,
+	ERROR_CONFIG_SYNTAX = 11,
+	ERROR_CMDLINE_UNKNOWN_OPTION = 20,
+	ERROR_OPEN_PROC_STAT = 30,
+	ERROR_PROC_STAT_FORMAT = 31,
+	ERROR_INIT_CPUCOUNT = 32,
+	ERROR_OPEN_SYS_CPUONLINE = 33,
+	ERROR_SYS_CPUONLINE_FORMAT = 34,
+
+	ERROR_CREATE_SOCKET = 50,
+	ERROR_SOCKET_BIND = 51,
+	ERROR_SOCKET_LISTEN = 52,
+	ERROR_SOCKET_ACCEPT = 53
+};
+
+#endif
