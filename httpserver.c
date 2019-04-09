@@ -49,7 +49,7 @@ void start_export (Config* conf)
 		printf (MESG_FAIL "Cannot bind to address (maybe it's already in use).\n");
 		exit (ERROR_SOCKET_BIND);
 	}
-
+	
 	while (true)
 	{
 		if (listen (listen_socket, LISTEN_MAX_QUEUE) < 0)
@@ -96,6 +96,7 @@ void start_export (Config* conf)
 		printf (MESG_DONE "total_length: %lu, accurate: %lu\n", 
 			total_length, strlen (export_buf));
 
+
 		/*
 		static char line_buf [128];
 		while (get_line (conn, line_buf, 128) > 0);
@@ -105,9 +106,9 @@ void start_export (Config* conf)
 		write (conn, "HTTP/1.1 200 OK\n", 16);
 		write (conn, content_length_stmt_buf, content_length_stmt_length);
 		write (conn, "Content-Type: text/plain\n", 25);
-		write (conn, "Connection: close\n\n", 19);
+		write (conn, "Connection: close\n\n", 19);		// This is important
 		write (conn, export_buf, total_length);	
 
-		//close (conn);
+		//close (conn);		// Do not close the connection actively
 	}
 }

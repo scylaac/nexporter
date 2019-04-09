@@ -1,7 +1,7 @@
 # Makefile for nexporter
 
 CC = gcc
-CFLAGS = -DANSI_TERM_COLOR -std=c99
+CFLAGS = -DANSI_TERM_COLOR -std=c99 -pg
 LIBS = 
 
 .PHONY: exe clean
